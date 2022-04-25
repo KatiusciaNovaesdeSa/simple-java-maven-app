@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+        timeout(time: 1, unit: 'HOURS') 
+    }
     stages {
 //         stage('Build') {         
             stage("QA"){
@@ -13,7 +16,7 @@ pipeline {
             }
             stage("QG") {
                 steps {
-                    timeout(time, unit:'HOURS') {
+                //    timeout(time, unit: 'HOURS') {
                         script {
                             define qg = waitForQualityGate()
                             if (qg.status != 'OK') {
