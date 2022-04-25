@@ -4,19 +4,18 @@ pipeline {
 //         timeout(time: 1, unit: 'HOURS') 
 //     }
     stages {       
-//             stage("QA"){
-//                 steps {
-//                     echo "Running QA"
-//                     withSonarQubeEnv('SonarCloud') {
-//                         sh "mvn sonar:sonar"
-//                 }
+            stage("QA"){
+                steps {
+                    echo "Running QA"
+                    withSonarQubeEnv('SonarCloud') {
+                        sh "mvn sonar:sonar"
+                }
                 
-//               }
-//             }
+              }
+            }
             stage("QG") {
                 steps {
-                       // timeout(time: 1, unit: 'HOURS')
-                     withSonarQubeEnv('SonarCloud') {
+                        timeout(time: 1, unit: 'HOURS')
                         script {
                             define qg = waitForQualityGate()
                             if (qg.status != 'OK') {
