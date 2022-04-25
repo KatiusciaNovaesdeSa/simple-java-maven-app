@@ -16,6 +16,7 @@ pipeline {
             stage("QG") {
                 steps {
                        // timeout(time: 1, unit: 'HOURS')
+                     withSonarQubeEnv('SonarCloud') {
                         script {
                             define qg = waitForQualityGate()
                             if (qg.status != 'OK') {
@@ -25,6 +26,7 @@ pipeline {
                     }
                 }
             }
+    }
 //             steps {
 //                 sh 'mvn -B -DskipTests clean package'
 //             }
