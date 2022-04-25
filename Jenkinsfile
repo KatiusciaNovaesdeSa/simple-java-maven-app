@@ -10,10 +10,10 @@ pipeline {
                     echo "Running QA"
                     withSonarQubeEnv('SonarCloud') {
                         bat"mvn sonar:sonar"
-                        -Dsonar.pullrequest.provider=GitHub \
-                        -Dsonar.pullrequest.github.repository=${org}/${repo} \
-                        -Dsonar.pullrequest.key=${env.CHANGE_ID} \
-                        -Dsonar.pullrequest.branch=${env.CHANGE_BRANCH} \
+//                         -Dsonar.pullrequest.provider=GitHub \
+//                         -Dsonar.pullrequest.github.repository=${org}/${repo} \
+//                         -Dsonar.pullrequest.key=${env.CHANGE_ID} \
+//                         -Dsonar.pullrequest.branch=${env.CHANGE_BRANCH} \
                 }
                 
               }
