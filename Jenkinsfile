@@ -15,7 +15,7 @@ pipeline {
 //             }
             stage("QG") {
                 steps {
-                        timeout(time: 1, unit: 'HOURS')
+                       // timeout(time: 1, unit: 'HOURS')
                         script {
                             define qg = waitForQualityGate()
                             if (qg.status != 'OK') {
