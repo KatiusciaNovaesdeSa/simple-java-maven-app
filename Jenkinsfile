@@ -3,21 +3,16 @@ pipeline {
 //     options {
 //         timeout(time: 1, unit: 'HOURS') 
 //     }
-    stages {
-//         stage('Build') {         
-            stage("QA"){
-                steps {
-                    echo "Running QA"
-                    withSonarQubeEnv('SonarCloud') {
-                        sh "mvn sonar:sonar"
-//                         -Dsonar.pullrequest.provider=GitHub \
-//                         -Dsonar.pullrequest.github.repository=${org}/${repo} \
-//                         -Dsonar.pullrequest.key=${env.CHANGE_ID} \
-//                         -Dsonar.pullrequest.branch=${env.CHANGE_BRANCH} \
-                }
+    stages {       
+//             stage("QA"){
+//                 steps {
+//                     echo "Running QA"
+//                     withSonarQubeEnv('SonarCloud') {
+//                         sh "mvn sonar:sonar"
+//                 }
                 
-              }
-            }
+//               }
+//             }
             stage("QG") {
                 steps {
                         timeout(time: 1, unit: 'HOURS')
