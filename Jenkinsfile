@@ -1,15 +1,15 @@
 pipeline {
     agent any
-    options {
-        timeout(time: 1, unit: 'HOURS') 
-    }
+//     options {
+//         timeout(time: 1, unit: 'HOURS') 
+//     }
     stages {
 //         stage('Build') {         
             stage("QA"){
                 steps {
                     echo "Running QA"
                     withSonarQubeEnv('SonarCloud') {
-                        bat"mvn sonar:sonar"
+                        sh "mvn sonar:sonar"
 //                         -Dsonar.pullrequest.provider=GitHub \
 //                         -Dsonar.pullrequest.github.repository=${org}/${repo} \
 //                         -Dsonar.pullrequest.key=${env.CHANGE_ID} \
@@ -20,7 +20,7 @@ pipeline {
             }
             stage("QG") {
                 steps {
-                //    timeout(time, unit: 'HOURS') {
+                        timeout(time: 1, unit: 'HOURS')
                         script {
                             define qg = waitForQualityGate()
                             if (qg.status != 'OK') {
