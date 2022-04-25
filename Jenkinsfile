@@ -8,7 +8,7 @@ pipeline {
             stage("QA"){
                 steps {
                     echo "Running QA"
-                    withSonarQubeEnv('') {
+                    withSonarQubeEnv('SonarCloud') {
                         bat"mvn sonar:sonar"
                 }
                 
