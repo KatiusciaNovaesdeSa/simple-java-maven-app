@@ -18,7 +18,7 @@ pipeline {
                         script {
                             define qg = waitForQualityGate()
                             if (qg.status != 'OK') {
-                                error "Pipeline aborted due to failure: ${qg.status}
+                                error "Pipeline aborted due to failure: ${qg.status}"
                             }
                         }
                     }
