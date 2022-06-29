@@ -25,6 +25,11 @@ pipeline {
                     }
                 }
             }
+    post{
+        always{
+            jiraSendBuildInfo site: 'katysa.atlassian.net'
+        }
+     }
     }
 //             steps {
 //                 sh 'mvn -B -DskipTests clean package'
